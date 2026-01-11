@@ -33,7 +33,6 @@ Les données sont récupérées par web scraping, stockées dans une base de don
 - Scrapy (scraping)
 - phpMyAdmin (gestion de la base)
 
-Chaque conteneur utilise son propre Dockerfile.
 
 ---
 
