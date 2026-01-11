@@ -1,0 +1,8 @@
+# Environnement virtuel Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Variables confidentielles
+.env
