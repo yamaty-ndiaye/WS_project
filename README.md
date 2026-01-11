@@ -1,49 +1,43 @@
-Projet : Comparateur de prix de boissons (Auchan vs Sakanal)
-Ce projet est un outil de veille tarifaire automatisé permettant de comparer les prix des boissons entre deux enseignes sénégalaises. Il repose sur une architecture multi-conteneurs pour garantir une installation et une exécution rapide.
+# Comparateur de prix de boissons
 
-Objectifs du projet
-Web Scraping : Collecte automatisée des données via Scrapy (noms, prix, images, liens).
+## Objectif
+Réaliser un comparateur de prix à partir de plusieurs sites e-commerce.
 
-Base de données : Stockage centralisé des informations dans MySQL.
+---
 
-Interface Web : Visualisation en PHP permettant d'identifier le site le moins cher.
+## Description du projet
+Le projet compare les prix des boissons entre deux sites :
+- Auchan
+- Sakanal
 
-Dockerisation : Utilisation de Docker Compose pour orchestrer l'ensemble des services.
+Les données sont récupérées par web scraping, stockées dans une base de données, puis affichées via une interface web.
 
-Architecture Technique
-Le projet utilise Docker Compose (version 3.8) pour piloter les services suivants :
+---
 
-db (mysql_boissons) : Base de données MySQL 8.0 avec volume persistant.
+## Fonctionnement
+- Scraping des produits (nom, prix, lien, image) avec Scrapy.
+- Stockage des données dans une base MySQL.
+- Base de données exécutée dans un conteneur Docker.
+- Interface web (PHP) exécutée dans un conteneur Docker.
+- Comparaison des prix entre les sites.
+- Affichage du site proposant le prix le moins cher.
+- Produits cliquables vers la page de vente.
+- phpMyAdmin utilisé pour gérer la base de données.
+- Orchestration des conteneurs avec Docker Compose.
 
-web (web_boissons) : Serveur Apache/PHP basé sur un Dockerfile personnalisé.
+---
 
-phpmyadmin (pma_boissons) : Interface graphique de gestion de la base de données.
+## Conteneurs utilisés
+- MySQL (base de données)
+- Apache / PHP (interface web)
+- Scrapy (scraping)
+- phpMyAdmin (gestion de la base)
 
-Installation et Lancement
-1. Démarrer les conteneurs
-Depuis la racine du projet, lancez la construction et le démarrage des services :
+Chaque conteneur utilise son propre Dockerfile.
 
+---
 
+## Lancement du projet
+
+```bash
 docker-compose up -d --build
-2. Alimenter la base de données (Scraping)
-Lancez les spiders Scrapy pour récupérer les données actuelles des deux sites :
-
-
-# Lancement pour Auchan
-scrapy crawl auchan
-
-# Lancement pour Sakanal
-scrapy crawl sakanal
-3. Accéder au comparateur
-Une fois le scraping terminé, ouvrez votre navigateur à l'adresse suivante : http://localhost:8000
-
-Fonctionnement du Comparateur
-L'interface PHP traite les données pour offrir une expérience utilisateur claire :
-
-Appairage automatique : Le code normalise les noms des produits pour comparer des articles similaires.
-
-Duel de prix : Les produits sont affichés face à face pour une lecture immédiate.
-
-Indicateur de gain : Un badge visuel désigne automatiquement le site proposant le prix le plus bas.
-
-Liens cliquables : Chaque article renvoie directement vers la fiche produit originale pour l'achat.
