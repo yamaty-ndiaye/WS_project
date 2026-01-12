@@ -1,8 +1,8 @@
-version: '3.8'
+version: "3.8"
 
 services:
   db:
-    image: mysql:8.0
+    build: ./db
     container_name: mysql_boissons
     environment:
       MYSQL_DATABASE: db_boissons

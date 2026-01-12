@@ -30,7 +30,6 @@ Les données sont récupérées par web scraping, stockées dans une base de don
 ## Conteneurs utilisés
 - MySQL (base de données)
 - Apache / PHP (interface web)
-- Scrapy (scraping)
 - phpMyAdmin (gestion de la base)
 
 
